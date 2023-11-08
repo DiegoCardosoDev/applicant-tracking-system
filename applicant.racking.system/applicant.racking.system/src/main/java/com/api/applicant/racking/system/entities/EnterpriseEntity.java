@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -21,4 +23,8 @@ public class EnterpriseEntity {
     private Long id;
     private String name;
     private String position_professional;
+
+    @OneToMany(mappedBy = "enterprise")
+    private List<JobsEntity> jobs;
+
 }

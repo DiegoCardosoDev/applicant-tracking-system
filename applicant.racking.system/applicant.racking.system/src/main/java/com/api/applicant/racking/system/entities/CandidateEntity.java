@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -29,4 +32,37 @@ public class CandidateEntity {
     private String linkedin_profile;
     private  Integer years_length_of_experience;
     private  Integer months_length_of_experience;
+
+    @ManyToMany
+    @JoinTable(
+            name = "candidate_stack",
+            joinColumns = @JoinColumn(name = "candidate_id"),
+            inverseJoinColumns = @JoinColumn(name = "stack_id")
+    )
+    private List<TechnologyStackEntity> stack = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "candidate_jobs", // Nome da tabela intermediária
+            joinColumns = @JoinColumn(name = "candidate_id"),
+            inverseJoinColumns = @JoinColumn(name = "job_id")
+    )
+    private List<JobsEntity> jobs = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "candidate_experience",
+            joinColumns = @JoinColumn(name = "candidate_id"),
+            inverseJoinColumns = @JoinColumn(name = "professional_experience_id")
+    )
+    private List<ProfessionalExperienceEntity> professionalExperienceEntities = new ArrayList<>();
+
+
+    @ManyToMany
+    @JoinTable(
+            name = "candidate_courses",
+            joinColumns = @JoinColumn(name = "candidate_id"),
+            inverseJoinColumns = @JoinColumn(name = "courses_id")
+    )
+    private List<CourseEntity> coursesEntities = new ArrayList<>();
 }
