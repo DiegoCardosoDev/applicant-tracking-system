@@ -2,8 +2,8 @@ package com.api.applicant.racking.system.controllers;
 
 
 import com.api.applicant.racking.system.dto.requests.CandidateRequest;
-import com.api.applicant.racking.system.dto.responses.CandidateDetailResponse;
 import com.api.applicant.racking.system.dto.responses.CandidateResponse;
+import com.api.applicant.racking.system.dto.responses.CandidateSimpleResponse;
 import com.api.applicant.racking.system.services.CandidateService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -29,9 +29,14 @@ public class CandidateController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdTechnologyStack);
     }
 
-    @GetMapping("/list")
+    @GetMapping("/detail/list")
     public List<CandidateResponse> getAllCandidatesWithStacks() {
         return candidateService.getAllCandidatesWithStacks();
+    }
+
+    @GetMapping("/list")
+    public List<CandidateSimpleResponse> getAllCandidates() {
+        return candidateService.getAllCandidates();
     }
 
 

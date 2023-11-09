@@ -1,15 +1,13 @@
 package com.api.applicant.racking.system.services;
 
 import com.api.applicant.racking.system.dto.requests.CandidateRequest;
-import com.api.applicant.racking.system.dto.responses.CandidateDetailResponse;
+import com.api.applicant.racking.system.dto.responses.CandidateSimpleResponse;
 import com.api.applicant.racking.system.dto.responses.CandidateResponse;
 import com.api.applicant.racking.system.entities.CandidateEntity;
-import com.api.applicant.racking.system.entities.CourseEntity;
 import com.api.applicant.racking.system.exeptions.BusinessException;
 import com.api.applicant.racking.system.exeptions.UnprocessableEntityException;
 import com.api.applicant.racking.system.mappers.CandidateMapper;
 import com.api.applicant.racking.system.repositories.CandidateRepository;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -67,6 +65,13 @@ public class CandidateService {
         }
     }
 
+    public List<CandidateSimpleResponse> getAllCandidates() {
+        List<CandidateEntity> candidates = candidateRepository.findAll();
+        return candidates.stream()
+                .map(CandidateSimpleResponse::new)
+                .collect(Collectors.toList());
+    }
+
     public void deleteCandidate(Long id){
         try{
             if ( !candidateRepository.existsById(id) ) {
@@ -79,14 +84,4 @@ public class CandidateService {
         }
     }
 
-    public List<CandidateDetailResponse> getAllCandidatesWithDetails() {
-        List<CandidateEntity> candidates = candidateRepository.findAll();
-
-        return candidates.stream()
-                .map(candidate -> {
-                    List<CourseEntity> courseEntities = candidate.getCoursesEntities();
-                    return new CandidateDetailResponse(candidate, courseEntities);
-                })
-                .collect(Collectors.toList());
-    }
 }
