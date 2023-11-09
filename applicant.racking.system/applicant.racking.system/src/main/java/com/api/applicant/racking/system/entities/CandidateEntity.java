@@ -30,6 +30,7 @@ public class CandidateEntity {
     private String locality;
     private String certification;
     private String linkedin_profile;
+    private String position_professional;
     private  Integer years_length_of_experience;
     private  Integer months_length_of_experience;
 
