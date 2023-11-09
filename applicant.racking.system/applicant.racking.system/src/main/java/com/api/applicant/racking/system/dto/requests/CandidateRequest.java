@@ -46,7 +46,7 @@ public class CandidateRequest {
     private String locality;
 
     private List<Long> stack;
-    private List<ProfissionalExperienceRequest> experiences;
+    private List<ExperienceRequest> experiences;
     private List<CourseRequest> courses;
     private List<Long> jobs;
 
