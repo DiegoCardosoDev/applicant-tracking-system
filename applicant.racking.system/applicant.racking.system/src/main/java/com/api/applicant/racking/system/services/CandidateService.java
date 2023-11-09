@@ -1,8 +1,10 @@
 package com.api.applicant.racking.system.services;
 
 import com.api.applicant.racking.system.dto.requests.CandidateRequest;
+import com.api.applicant.racking.system.dto.responses.CandidateDetailResponse;
 import com.api.applicant.racking.system.dto.responses.CandidateResponse;
 import com.api.applicant.racking.system.entities.CandidateEntity;
+import com.api.applicant.racking.system.entities.CourseEntity;
 import com.api.applicant.racking.system.exeptions.BusinessException;
 import com.api.applicant.racking.system.exeptions.UnprocessableEntityException;
 import com.api.applicant.racking.system.mappers.CandidateMapper;
@@ -75,5 +77,16 @@ public class CandidateService {
         }catch ( Exception e  ){
             throw new BusinessException(format("Error delete Candidate  with id: " + id),e);
         }
+    }
+
+    public List<CandidateDetailResponse> getAllCandidatesWithDetails() {
+        List<CandidateEntity> candidates = candidateRepository.findAll();
+
+        return candidates.stream()
+                .map(candidate -> {
+                    List<CourseEntity> courseEntities = candidate.getCoursesEntities();
+                    return new CandidateDetailResponse(candidate, courseEntities);
+                })
+                .collect(Collectors.toList());
     }
 }
