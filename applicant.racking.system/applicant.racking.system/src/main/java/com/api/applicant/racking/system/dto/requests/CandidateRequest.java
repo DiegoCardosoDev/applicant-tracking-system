@@ -7,6 +7,8 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -42,5 +44,10 @@ public class CandidateRequest {
 
     @NotBlank
     private String locality;
+
+    private List<Long> stack;
+    private List<ProfissionalExperienceRequest> experiences;
+    private List<CourseRequest> courses;
+    private List<Long> jobs;
 
 }
