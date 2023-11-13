@@ -36,4 +36,8 @@ public class JobsController {
         return jobsService.getAllActiveJobs();
     }
 
+    @GetMapping ( "/title" )
+    public List<JobsResponse> getJobsByTitle(@RequestParam String title){
+        return jobsService.getJobByTitle(title);
+    }
 }

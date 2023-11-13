@@ -13,6 +13,8 @@ public interface JobsRepository extends JpaRepository<JobsEntity, Long> {
     @Query ("SELECT j FROM JobsEntity j WHERE j.is_active = true")
     List<JobsEntity> findActiveJobsIsTrue();
 
-    List<JobsEntity> findByJobTitleContainingIgnoreCase(String name);
+    @Query("SELECT j FROM JobsEntity j WHERE j.job_title = :jobTitle")
+    List<JobsEntity> findByJobTitle(String jobTitle);
+
 
 }

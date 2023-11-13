@@ -57,7 +57,7 @@ public class JobsService {
     }
 
     public List<JobsResponse> getJobByTitle(String name){
-        List<JobsEntity> jobs = jobsRepository.findByJobTitleContainingIgnoreCase(name);
+        List<JobsEntity> jobs = jobsRepository.findByJobTitle(name);
         return jobs.stream()
                 .map(jobsMapper::mapToResponse)
                 .collect(Collectors.toList());
