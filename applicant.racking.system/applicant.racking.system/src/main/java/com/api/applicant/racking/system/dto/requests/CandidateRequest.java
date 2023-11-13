@@ -25,6 +25,9 @@ public class CandidateRequest {
     @Email (message = "insira uma email valido!")
     private String email;
 
+    @NotBlank (message = "informe telefone para contato")
+    private String phone;
+
     @NotBlank (message = "informe a atuação")
     private String position_professional;
 

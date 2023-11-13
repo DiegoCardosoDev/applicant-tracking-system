@@ -29,6 +29,7 @@ public class CandidateMapper {
         CandidateResponse candidateResponse = new CandidateResponse();
         candidateResponse.setName(candidateEntity.getName());
         candidateResponse.setEmail(candidateEntity.getEmail());
+        candidateResponse.setPhone(candidateEntity.getPhone());
         candidateResponse.setAge(candidateEntity.getAge());
         candidateResponse.setPosition_professional(candidateEntity.getPosition_professional());
         candidateResponse.setSeniority(candidateEntity.getSeniority());
@@ -103,6 +104,7 @@ public class CandidateMapper {
 
         candidateEntity.setName(candidateRequest.getName());
         candidateEntity.setEmail(candidateRequest.getEmail());
+        candidateEntity.setPhone(candidateRequest.getPhone());
         candidateEntity.setAge(candidateRequest.getAge());
         candidateEntity.setPosition_professional(candidateRequest.getPosition_professional());
         candidateEntity.setSeniority(candidateRequest.getSeniority());

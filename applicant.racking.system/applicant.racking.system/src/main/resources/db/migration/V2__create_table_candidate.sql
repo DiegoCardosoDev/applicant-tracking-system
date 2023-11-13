@@ -11,5 +11,6 @@ CREATE TABLE candidate (
     years_length_of_experience INTEGER,
     months_length_of_experience INTEGER,
     position_professional VARCHAR(255),
+    phone VARCHAR(255),
     linkedin_profile VARCHAR(255)
 );

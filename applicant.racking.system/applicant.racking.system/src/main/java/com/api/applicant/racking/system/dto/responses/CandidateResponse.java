@@ -16,6 +16,7 @@ public class CandidateResponse {
     private String name;
     private Integer age;
     private String email;
+    private String phone;
     private String position_professional;
     private String seniority;
     private String graduation;
